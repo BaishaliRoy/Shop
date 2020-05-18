@@ -1,0 +1,11 @@
+.container{
+    max-width: 50%;
+    margin-top: 50px;
+    padding: 50px;
+    border-radius: 20px;
+    background-color:lightcoral;
+}
+
+span{
+    cursor: pointer;
+}

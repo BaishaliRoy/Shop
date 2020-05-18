@@ -1,0 +1,21 @@
+<div class="container">
+  <input #newUser (keyup.enter)="addNewUser(newUser)"
+    type="text" 
+    class="form-group">
+  <ul class="list-group">
+    <li *ngFor = "let user of userList"
+    class="list-group-item">
+    {{user.name}}           
+    <span (click)="updateUser(user)"
+      class="badge badge-primary badge-pill">
+      {{user.username}}
+    </span>  
+    <button (click)="removeUser(user)"
+     class="btn btn-primary btn-sm">Delete</button
+      >
+      <button (click)="makeError()"
+     class="btn btn-primary bt-md">Error</button
+      >
+    </li>
+  </ul>
+</div>

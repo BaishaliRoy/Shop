@@ -1,0 +1,90 @@
+<div class=container>
+<!-- *ngIf example-->
+<div *ngIf="courses.length > 0; then List else noList">                              
+
+</div>
+
+<ng-template #List>
+  Courses are here!!
+</ng-template>
+
+<ng-template #noList>
+  No courses
+</ng-template>
+<!-- *ngIf example ends here-->
+<br>
+
+<!-- Hidden example-->
+<div [hidden]="courses.length == 0" >                              
+  Courses are here!!
+</div>
+
+<div [hidden]="courses.length > 0">                              
+  No courses
+</div>
+<!-- Hidden example ends here-->
+
+<!-- *ngSwitchCase example-->
+<ul class="nav nav-pills">
+  <li class="nav-item" >
+    <a class="nav-link" 
+    [class.active]="switchVar == 'FootBall'"
+      (click)="switchVar = 'FootBall'">
+      FootBall
+    </a>
+  </li>
+  <li class="nav-item"   >
+    <a class="nav-link"   
+    [class.active]="switchVar=='Cricket'"
+      (click)="switchVar = 'Cricket'">
+      Cricket
+    </a>
+  </li>
+</ul>
+<div [ngSwitch]="switchVar" >
+  <div *ngSwitchCase="'FootBall'">FootBall</div>
+  <div *ngSwitchCase="'Cricket'">Cricket</div>
+</div>
+<!-- *ngSwitchCase example ends here-->
+<br>
+
+<!-- *ngFor examples-->
+
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center"
+   *ngFor ="let item of listItems; index as i; first as isFirst">
+    {{i+1}}/{{listItems.length}} - {{item}} <span *ngIf=isFirst> First</span>
+    <span class="badge badge-primary badge-pill"(click)=removeItem(item)>
+      Remove
+    </span>  
+    <span class="badge badge-primary badge-pill" (click)=updateItem(i)>
+      Update
+    </span>  
+
+  </li>
+</ul>
+<br>
+<button class="btn btn-primary"(click)=addItem()>
+  Add Item
+</button>
+
+<!-- *ngFor example ends here-->
+<br>
+<!-- safe traversal operator  "?" example-->
+<span>
+  {{customerDetails.Name.First}}
+  {{customerDetails.Name.Middle}}
+  {{customerDetails.Name.Last}}
+  {{customerDetails.Address?.Home}}  <!-- using safe traversal operator -? to avoid error-->
+</span>
+<!-- end of safe traversal operator  "?" example-->
+<br>
+<br>
+<!-- custom directive example-->
+  <input type="text" [appMyCustomDiective]="'upper'">
+  <br>
+  <br>
+  <input type="text" appMyCustomDiective [Case]="'lower'">
+<!-- end of custom directive example-->
+
+</div >

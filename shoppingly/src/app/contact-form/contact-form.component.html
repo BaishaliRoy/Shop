@@ -1,0 +1,58 @@
+<form  #form="ngForm" (ngSubmit)="log(form)">
+<div class="container my-5">
+  <div class="form-group">
+    <label for="Name">Name</label>
+      <input 
+        required 
+        minlength="3" 
+        maxlength="10"
+        ngModel 
+        name="Name" 
+        #Name="ngModel" 
+        (change)=log(Name)
+        id="Name" 
+        type="text" 
+        class="form-control">
+      <div class="alert alert-danger" *ngIf="Name.touched && !Name.valid">
+        Input is required
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="Comment">Comment</label>
+    <textarea
+      ngModel
+      name="Comment" 
+      #Comment="ngModel"
+      (keyup)=log(Comment)
+      id="Comment" 
+      class="form-control">
+    </textarea>
+  </div>
+  <div class="checkbox">
+    <label>
+    <input 
+    ngModel
+    name="Subscribe"
+    #Subscribe="ngModel"
+    type="checkbox"> Subscribe With Us!
+    </label>
+  </div>  
+  <div class="form-group">
+    <label for=""></label>
+    <select 
+      ngModel
+      name="dropdown" 
+      #dropdown="ngModel"
+      id="dropdown">
+      <option *ngFor='let item of dropdownItems' [value]="item.id">{{item.name}}</option>
+    </select>
+  </div>
+  <div>{{form.value|json}}</div>
+  <button
+   class="btn btn-primary btn-md"
+   [disabled]=!form.valid>
+   Submit
+  </button>
+   
+</div>
+</form>

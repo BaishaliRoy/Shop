@@ -1,0 +1,15 @@
+<p>
+  home works!
+</p>
+<br>
+<input #myinput 
+       [(ngModel)] = name
+       type="text" 
+       class="input-group"
+       (blur)= "onKeyUp()"/>
+<br>
+<button class="btn btn-primary btn-lg" 
+        (click) = "onClick()"
+        [disabled] = "state"
+> Submit
+</button>
